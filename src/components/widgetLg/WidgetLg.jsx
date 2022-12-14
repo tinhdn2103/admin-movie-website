@@ -33,8 +33,8 @@ const WidgetLg = () => {
               <th className="widgetLgTh">Gói dịch vụ</th>
               <th className="widgetLgTh">Giá $</th>
             </tr>
-            {newPayments.map((payment) => (
-              <tr className="widgetLgTr">
+            {newPayments.map((payment, index) => (
+              <tr key={index} className="widgetLgTr">
                 <td className="widgetLgUser">
                   <img
                     src={

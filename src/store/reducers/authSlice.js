@@ -26,9 +26,11 @@ const authSlice = createSlice({
     //set user
     setUser(state, action) {
       const user = JSON.parse(localStorage.getItem("user"));
-      const decodedToken = jwt_decode(user.accessToken);
-      const currentDate = new Date();
-      if (decodedToken.exp * 1000 > currentDate.getTime()) state.user = user;
+      if (user) {
+        const decodedToken = jwt_decode(user.accessToken);
+        const currentDate = new Date();
+        if (decodedToken.exp * 1000 > currentDate.getTime()) state.user = user;
+      }
     },
   },
   extraReducers: {

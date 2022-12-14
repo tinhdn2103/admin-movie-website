@@ -3,6 +3,7 @@ import "./newMovie.css";
 import storage from "../../firebase";
 import { createMovie } from "../../store/reducers/movieSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NewMovie = () => {
   const [movie, setMovie] = useState(null);
@@ -12,6 +13,7 @@ const NewMovie = () => {
   const [uploaded, setUploaded] = useState(0);
   const dispatch = useDispatch();
   const [progress, setProgress] = useState(0);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -62,6 +64,7 @@ const NewMovie = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createMovie(movie));
+    navigate("/movies");
   };
 
   return (
